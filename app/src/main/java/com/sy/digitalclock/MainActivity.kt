@@ -89,9 +89,13 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (num == 1) {
             super.onBackPressed()
+            num = 0
+            finish()
+            return
         } else {
             Toast.makeText(this, "二次确认再退出", Toast.LENGTH_SHORT).show()
             num++
+            handler.postDelayed(Runnable { num = 0 }, 1000)
         }
     }
 
